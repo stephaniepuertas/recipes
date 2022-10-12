@@ -68,6 +68,7 @@
                             <!-- portion for name -->
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name:</label>
+                                <!-- for prepopulated form you add the jinja tags in the area near the text -- where you would normally put text -->
                                 <textarea name="name" id="name" class="form-control" >{{recipe.name}}</textarea>
                                 {% if messages %}
                                     {% for category, message in messages %}
@@ -92,7 +93,7 @@
                             <!-- portion for instructions -->
                             <div class="mb-3">
                                 <label for="instructions" class="form-label">Instructions:</label>
-                                <textarea name="instructions" id="instructions" class="form-control"></textarea>
+                                <textarea name="instructions" id="instructions" class="form-control">{{recipe.instructions}}</textarea>
                                 {% if messages %}
                                     {% for category, message in messages %}
                                         {% if category == 'instructions' %}
