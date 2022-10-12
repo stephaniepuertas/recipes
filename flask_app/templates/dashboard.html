@@ -1,27 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>ALL recipes</title>
 </head>
+
 <body>
     <div class="container">
         <div class="row">
             <div class="col">
                 <div class="card">
-                    <h5 class="card-header"> Welcome</h5>
+                    <h5 class="card-header"> Welcome, {{user.first_name}}</h5>
                     <div class="card-body">
-                        hello, {{user.first_name}}
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="h5">All posted recipes</div>
+                            <div class="links">
+                                <a href="/recipes/new"> +Create</a>
+                                <a href="/users/logout">Logout</a>
+                            </div>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Under</th>
+                                    <th>Posted By</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for recipe in recipes %}
+                                <tr>
+                                    <td>{{ recipe.name }}</td>
+                                    <td>{{ 'Yes' if recipe.under_30mins else 'No'}}</td>
+                                    <!-- to obtain the user name for the person who made the recipe -->
+                                    <td>{{ recipe.user.first_name }}</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-primary" href="/recipes/{{recipe.id}}">view
+                                            recipe</a>
+                                        {% if recipe.user_id == session.user_id %}
+                                        <div class="card-footer ">
+                                            <a class="btn btn-sm btn-warning me-2"
+                                                href="/recipes/{{ recipe.id }}/edit">Edit</a>
+                                            <a class="btn btn-sm btn-danger"
+                                                href="/recipes/{{ recipe.id }}/delete">Delete</a>
+                                        </div>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-                <div class="mt-3">
-                    <a href="/users/logout">logout</a>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>

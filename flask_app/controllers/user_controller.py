@@ -38,7 +38,7 @@ def register_user():
 
     #log the user in and save user's id in session
     session['user_id']= user_id
-    return redirect('/dashboard')
+    return redirect('/recipes')
 
 @app.post('/users/login')
 def login_users():
@@ -60,18 +60,9 @@ def login_users():
 
     #if they password is correct, log them in
     session['user_id']=found_user.id
-    return redirect('/dashboard')
+    return redirect('/recipes')
 
 
-@app.get('/dashboard')
-def dashboard():
-    if 'user_id' not in session:
-        return redirect('users/login_reg')
-    data= {
-        'id': session['user_id']
-    }
-    user= User.find_by_id(data)
-    return render_template('dashboard.html', user= user)
 
 @app.get('/users/logout')
 def logout():

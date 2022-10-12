@@ -13,13 +13,17 @@
 <body>
     {% with messages = get_flashed_messages (with_categories = true) %}
     <div class="container"> 
+        <div class="mb-3">
+            <div class="h1">Recipe Share</div>
+        </div>
+        
         <div class="row">
-            <div class="col">
+            <div class="col"> 
                 <div class="card">
                     <h5 class="card-header"> REGISTER</h5>
                     <div class="card-body">
                         <form action="/users/register" method="post">
-                        <div class="mb3">
+                        <div class="mb-3">
                             <label for="first_name" class="form-label">First name:</label>
                             <input type="text" name="first_name" id="first_name" class="form-control">
                             {% if messages %}
@@ -30,7 +34,7 @@
                                 {% endfor%}
                             {% endif%}
                         </div>
-                        <div class="mb3">
+                        <div class="mb-3">
                             <label for="last_name" class="form-label">Last name:</label>
                             <input type="text" name="last_name" id="last_name" class="form-control">
                             {% if messages %}
@@ -41,7 +45,7 @@
                                 {% endfor%}
                             {% endif%}
                         </div>
-                        <div class="mb3">
+                        <div class="mb-3">
                             <label for="email" class="form-label">Email:</label>
                             <input type="text" name="email" id="email" class="form-control">
                             {% if messages %}
@@ -52,7 +56,7 @@
                                 {% endfor%}
                             {% endif%}
                         </div>
-                        <div class="mb3">
+                        <div class="mb-3">
                             <label for="password" class="form-label">Password:</label>
                             <input type="password" name="password" id="password" class="form-control">
                             {% if messages %}
@@ -63,7 +67,7 @@
                                 {% endfor%}
                             {% endif%}
                         </div>
-                        <div class="mb3">
+                        <div class="mb-3">
                             <label for="confirm_password" class="form-label">Confirm Password:</label>
                             <input type="password" name="confirm_password" id="confirm_password" class="form-control">
                             {% if messages %}
@@ -89,7 +93,7 @@
                     <div class="card-body">
                         <!-- login/ post method -->
                         <form action="/users/login" method="post">
-                            <div class="mb3">
+                            <div class="mb-3">
                                 <label for="email" class="form-label">Email:</label>
                                 <input type="text" name="email" id="email" class="form-control">
                                 {% if messages %}
@@ -100,7 +104,7 @@
                                     {% endfor%}
                                 {% endif%}
                             </div>
-                            <div class="mb3">
+                            <div class="mb-3">
                                 <label for="password" class="form-label">Password:</label>
                                 <input type="password" name="password" id="password" class="form-control">
                                 {% if messages %}
