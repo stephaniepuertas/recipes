@@ -38,6 +38,10 @@ class Recipe:
         if len(form['instructions']) < 3:
             flash('instructions must be at least three characters.', 'instructions')
             is_valid = False
+    #make sure you add NOT for date form--->
+        if not form['date_made']:
+            flash('Date must not be blank.', 'date_made')
+            is_valid = False
         return is_valid
 
     # create a recipe

@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <!-- beginning of navbar -->
-        <nav class="navbar navbar-expand-lg bg-light mb-3">
+        <nav class="navbar navbar-expand-lg mb-3" style="background-color: #e3f2fd;">
             <div class="container-fluid">
             <a class="navbar-brand" href="#">Recipes!</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,12 +27,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/recipes/new">Create recipe</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/recipes/logout">Logout</a>
+                </li>
+                <!-- <li class="nav-item">
                     <a class="nav-link disabled">Disabled</a>
-                </li> -->
+                </li> --> 
                 </ul>
             </div>
             </div>
@@ -68,7 +68,7 @@
                             <!-- portion for name -->
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name:</label>
-                                <!-- for prepopulated form you add the jinja tags in the area near the text -- where you would normally put text -->
+                                <!-- for prepopulated form you add the jinja tags in the area near the text -- where you would normally put  -->
                                 <textarea name="name" id="name" class="form-control" >{{recipe.name}}</textarea>
                                 {% if messages %}
                                     {% for category, message in messages %}
@@ -129,11 +129,12 @@
                                         {% endfor %}
                                     {% endif %}
                                 </div>
-
+<!-- check how to put a place holder for date/time -->
                                 <!-- portion for date cooked/made: -->
+                                <!-- for place holder add value= "" -->
                                 <div class="col">
                                     <label for="date_made" class="form-label">Date made/cooked:</label>
-                                    <input type="date" name="date_made" id="date_made" class="form-control" />
+                                    <input type="date" value="{{recipe.date_made}}" name="date_made" id="date_made" class="form-control" />
                                     {% if messages %}
                                         {% for category, message in messages %}
                                             {% if category == 'date_made' %}
